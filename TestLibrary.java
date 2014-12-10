@@ -128,6 +128,7 @@ class TestLibraryDemo extends JFrame implements ActionListener, ListSelectionLis
 		isbn = new JTextField(10);
 		availability = new JTextField(10);
 		renting = new JTextField(10);	
+		//수정
 		pdown1left1.add(new Label("도서 제목     "));
 		pdown1left1.add(title);
 		pdown1left1.add(new Label("출판사        "));
