@@ -461,23 +461,3 @@ public class TestLibrary //extends Frame
 		new TestLibraryDemo();
 	}
 }
-/*
-public TestLibrary(){
-	super("제목");
-	this.init();
-	this.start();
-	this.setSize(300,200);
-	this.setLocation(400,200);
-	this.setVisible(true);
-}
-public void init(){
-	System.out.println("메롱");
-}
-public void start(){
-	System.out.println("조주");
-}
-}
-}
-*/
-
-
