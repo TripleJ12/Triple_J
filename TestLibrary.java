@@ -54,9 +54,11 @@ class TestLibraryDemo extends JFrame implements ActionListener, ListSelectionLis
 	private JTextField pw;
 	private JTextField name;
 	private JTextField major;
+	private JTextField curious;
 	
 	private JButton Jlogin; //·Î±×ÀÎ ¹öÆ°
 	private JButton Jjoin; //È¸¿ø°¡ÀÔ ¹öÆ°
+	private JButton Jsearch; //°Ë»ö ¹öÆ°
 	
 	private JButton Jadd; //Ãß°¡ ¹öÆ°
 	private JButton Jmod; //¼öÁ¤ ¹öÆ°
@@ -202,16 +204,77 @@ class TestLibraryDemo extends JFrame implements ActionListener, ListSelectionLis
 		jp2=new JPanel();
 		jp3=new JPanel();
 		jp4=new JPanel(new GridLayout(1,3));
+<<<<<<< HEAD
 		*/
 		pdown1.setBorder(new TitledBorder("µµ¼­ »ó¼¼ Á¤º¸"));
 		pdown2right1.setBorder(new TitledBorder("°Ë»öÃ¢"));
 		pdown2right2up.setBorder(new TitledBorder("µµ¼­ ¸ñ·Ï"));
 		pdown2right2down.setBorder(new TitledBorder("µµ¼­ Á¤º¸"));
+=======
+		jp1.setBorder(new TitledBorder("Ãß°¡/¼öÁ¤"));
+	
+		jp3.setBorder(new TitledBorder("µµ¼­ ¸ñ·Ï"));
+		jp4.setBorder(new TitledBorder("µµ¼­ Á¤º¸"));
+		
+		id=new JTextField(10);
+		pw=new JTextField(10);	
+		
+		title=new JTextField(10);
+		publisher=new JTextField(10);
+		authors=new JTextField(10);
+		isbn=new JTextField(10);
+		availability=new JTextField(10);
+		renting=new JTextField(10);
+		curious=new JTextField(10);
+		
+		
+		panel1.add(id);
+		panel1.add(pw);
+		jp1.add(new Label("µµ¼­ Á¦¸ñ     "));
+		jp1.add(title);
+		jp1.add(new Label("ÃâÆÇ»ç        "));
+		jp1.add(publisher);
+		jp1.add(new Label("Àú  ÀÚ          "));
+		jp1.add(authors);
+		jp1.add(new Label("°íÀ¯ ¹øÈ£    "));
+		jp1.add(isbn);
+		jp1.add(new Label("´ëÃâ°¡´É¿©ºÎ"));
+		jp1.add(availability);
+		jp1.add(new Label("´ëÃâÀÚ     "));
+		jp1.add(renting);
+		jp1.add(new Label("°Ë»ö¶õ     "));
+		jp1.add(curious);
+		
+		Jlogin=new JButton("·Î±×ÀÎ");
+		Jjoin=new JButton("È¸¿ø°¡ÀÔ");
+		Jadd=new JButton("Ãß°¡");
+		Jmod=new JButton("¼öÁ¤");
+		Jdel=new JButton("»èÁ¦");
+		Jsearch=new JButton("°Ë»ö");
+		
+		panel1.add(Jlogin);
+		panel1.add(Jjoin);
+		
+		
+		jp1.add(Jadd);
+		jp1.add(Jmod);
+		jp1.add(Jdel);
+		jp1.add(Jsearch);
+		
+		 
+	
+		list=new JList();
+		info=new JTextArea();
+>>>>>>> ê²€ìƒ‰ ê¸°ëŠ¥ì´ ì¶”ê°€ëœ TestLibrary.java upload
 		
 		//pt.add(panel2);
 		//pt.add(panel3);
 		
+<<<<<<< HEAD
 		//jp3.add(list);
+=======
+	
+>>>>>>> ê²€ìƒ‰ ê¸°ëŠ¥ì´ ì¶”ê°€ëœ TestLibrary.java upload
 		
 		
 		int v=ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED;
@@ -253,6 +316,7 @@ class TestLibraryDemo extends JFrame implements ActionListener, ListSelectionLis
 		Jadd.addActionListener(this);
 		Jmod.addActionListener(this);
 		Jdel.addActionListener(this);
+		Jsearch.addActionListener(this);
 		list.addListSelectionListener(this);
 		jmi1.addActionListener(this);
 		jmi2.addActionListener(this);
@@ -362,7 +426,34 @@ class TestLibraryDemo extends JFrame implements ActionListener, ListSelectionLis
 		
 	}
 	
-	
+	else if(event.getSource()==Jsearch)
+	{
+
+		String str=curious.getText();
+		info.setText("");
+		String title;
+		
+			Vector Title=new Vector();
+			
+			list.setListData(Title);
+			for(int i=0;i<library.getLibraryCount();i++)
+			{
+				title=(library.getLibraryAt(i).getTitle());
+				if(title.contains(str))
+				{
+					
+					Title.addElement(library.getLibraryAt(i).getTitle());
+					info.setText(library.getLibraryAt(i).getTitle());
+					
+				}
+			}
+			list.setListData(Title);
+			
+			
+			curious.setText("");
+			
+			
+	}
 	else if((event.getActionCommand()).equals("ºÒ·¯¿À±â"))
 	{
 		try{
