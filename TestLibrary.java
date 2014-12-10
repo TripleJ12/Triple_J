@@ -17,6 +17,7 @@ class TestLibraryDemo extends JFrame implements ActionListener, ListSelectionLis
 	//------------------------------------------------------------------------------
 	// 사용자 UI를 위해 필요한 변수들 선언 
 	//------------------------------------------------------------------------------
+<<<<<<< HEAD
 	private JPanel panel1;
 	private JPanel panel2;
 	private JPanel panel3;
@@ -25,15 +26,30 @@ class TestLibraryDemo extends JFrame implements ActionListener, ListSelectionLis
 	private JPanel jp2;
 	private JPanel jp3;
 	private JPanel jp4;
+=======
+	private JPanel pup;
+	private JPanel pdown;
+	private JPanel pdown1;
+	private JPanel pdown2;
+	//private JPanel panel3;
+	//private JPanel panel4;
+	private JPanel pdown1left1;
+	private JPanel pdown1left2;
+	private JPanel pdown2right1;
+	private JPanel pdown2right2;
+	private JPanel pdown2right2up;
+	private JPanel pdown2right2down;
+	//private JPanel jp4;
+>>>>>>> Tbranch
 	
 	
 	private JTextField title;
 	private JTextField publisher;
-	
 	private JTextField authors;
 	private JTextField isbn;
 	private JTextField availability;
 	private JTextField renting;
+	
 	private JTextField id;
 	private JTextField pw;
 	private JTextField name;
@@ -45,6 +61,9 @@ class TestLibraryDemo extends JFrame implements ActionListener, ListSelectionLis
 	private JButton Jadd; //추가 버튼
 	private JButton Jmod; //수정 버튼
 	private JButton Jdel; //삭제 버튼
+	
+	private JButton Jsearch; //검색 버튼
+	private JTextField curious; // 검색 창
 	
 	private JList list; // 도서목록
 	//private JLabel icon;
@@ -60,6 +79,8 @@ class TestLibraryDemo extends JFrame implements ActionListener, ListSelectionLis
 	//------------------------------------------------------------------------------
 	//생성자 - GUI를 구성한다.
 	//------------------------------------------------------------------------------
+	
+	
 	public TestLibraryDemo() 
 	{
 		JMenuBar jmb=new JMenuBar();
@@ -80,80 +101,134 @@ class TestLibraryDemo extends JFrame implements ActionListener, ListSelectionLis
 		// 사용자 화면에 컴포넌트들 구성하여 배치
 		// 각 컴포넌트 구성시 필요한 리스너 추가
 		//------------------------------------------------------------------------------
+		pup = new JPanel();
+		//pup.setLayout(new GridLayout(1,6));
+		id = new JTextField(10);
+		pw = new JTextField(10);	
+		Jlogin = new JButton("로 그 인");
+		Jjoin = new JButton("회원가입");
+		pup.add(new Label("ID:"));
+		pup.add(id);
+		pup.add(new Label("PW:"));
+		pup.add(pw);
+		pup.add(Jlogin);
+		pup.add(Jjoin);
 		
-		panel1 = new JPanel();
-		//panel1.add( new JLabel("도서 관리 프로그램"));
-		panel2=new JPanel(new GridLayout(1,1));
+		pdown = new JPanel();
+		pdown.setLayout(new GridLayout(1,2));
+		
+		pdown1 = new JPanel();
+		pdown1.setLayout(new BorderLayout());
+		
+		pdown1left1 = new JPanel();
+		pdown1left1.setLayout(new GridLayout(6,2,10,10));
+		title = new JTextField(10);
+		publisher = new JTextField(10);
+		authors = new JTextField(10);
+		isbn = new JTextField(10);
+		availability = new JTextField(10);
+		renting = new JTextField(10);	
+		pdown1left1.add(new Label("도서 제목     "));
+		pdown1left1.add(title);
+		pdown1left1.add(new Label("출판사        "));
+		pdown1left1.add(publisher);
+		pdown1left1.add(new Label("저  자          "));
+		pdown1left1.add(authors);
+		pdown1left1.add(new Label("고유 번호    "));
+		pdown1left1.add(isbn);
+		pdown1left1.add(new Label("대출가능여부"));
+		pdown1left1.add(availability);
+		pdown1left1.add(new Label("대출자     "));
+		pdown1left1.add(renting);
+		
+		pdown1left2 = new JPanel();
+		//pdown1left2.setLayout(new GridLayout(1,3,20,20));
+		Jadd = new JButton("추 가");
+		Jmod = new JButton("수 정");
+		Jdel = new JButton("삭 제");
+		pdown1left2.add(Jadd);
+		pdown1left2.add(Jmod);
+		pdown1left2.add(Jdel);
+		
+		pdown1.add(pdown1left1, BorderLayout.CENTER);
+		pdown1.add(pdown1left2, BorderLayout.SOUTH);
+		
+		pdown2 = new JPanel();
+		pdown2.setLayout(new BorderLayout());
+		
+		pdown2right1 = new JPanel();
+		pdown2right1.setLayout(new GridLayout(1,2,10,10));
+		curious = new JTextField(10);
+		pdown2right1.add(curious);
+		Jsearch = new JButton("검 색");
+		pdown2right1.add(Jsearch);
+		
+		pdown2right2 = new JPanel();
+		pdown2right2.setLayout(new GridLayout(2,1));
+		
+		pdown2right2up = new JPanel();
+		pdown2right2up.setLayout(new GridLayout(1,1));
+		list = new JList();
+		pdown2right2up.add(list);
+		
+		pdown2right2down = new JPanel();
+		pdown2right2down.setLayout(new GridLayout(1,1));
+		info = new JTextArea();
+		pdown2right2down.add(info);
+		
+		pdown2right2.add(pdown2right2up);
+		pdown2right2.add(pdown2right2down);
+		
+		pdown2.add(pdown2right1, BorderLayout.NORTH);
+		pdown2.add(pdown2right2, BorderLayout.CENTER);
+		
+		pdown.add(pdown1);
+		pdown.add(pdown2);
+		/*
+		jp1 = new JPanel();
+		jp1.setLayout(new GridLayout(3,4,15,15));
+		jp2 = new JPanel();
+		jp2.setLayout(new GridLayout(1,3,50,50));
+
+		jp2.add(Jadd);
+		jp2.add(Jmod);
+		jp2.add(Jdel);
+		
+		panel2=new JPanel(new GridLayout(2,1));
 		panel3=new JPanel(new GridLayout(1,1));
 		panel4=new JPanel(new GridLayout(0,1));
 		jp1=new JPanel();
-		//jp2=new JPanel();
+		jp2=new JPanel();
 		jp3=new JPanel();
 		jp4=new JPanel(new GridLayout(1,3));
-		jp1.setBorder(new TitledBorder("추가/수정"));
-	
-		jp3.setBorder(new TitledBorder("도서 목록"));
-		jp4.setBorder(new TitledBorder("도서 정보"));
+		*/
+		pdown1.setBorder(new TitledBorder("도서 상세 정보"));
+		pdown2right1.setBorder(new TitledBorder("검색창"));
+		pdown2right2up.setBorder(new TitledBorder("도서 목록"));
+		pdown2right2down.setBorder(new TitledBorder("도서 정보"));
 		
-		id=new JTextField(10);
-		pw=new JTextField(10);	
+		//pt.add(panel2);
+		//pt.add(panel3);
 		
-		title=new JTextField(10);
-		publisher=new JTextField(10);
-		authors=new JTextField(10);
-		isbn=new JTextField(10);
-		availability=new JTextField(10);
-		renting=new JTextField(10);
+		//jp3.add(list);
 		
-		panel1.add(id);
-		panel1.add(pw);
-		jp1.add(new Label("도서 제목     "));
-		jp1.add(title);
-		jp1.add(new Label("출판사        "));
-		jp1.add(publisher);
-		jp1.add(new Label("저  자          "));
-		jp1.add(authors);
-		jp1.add(new Label("고유 번호    "));
-		jp1.add(isbn);
-		jp1.add(new Label("대출가능여부"));
-		jp1.add(availability);
-		jp1.add(new Label("대출자     "));
-		jp1.add(renting);
-		
-		Jlogin=new JButton("로그인");
-		Jjoin=new JButton("회원가입");
-		Jadd=new JButton("추가");
-		Jmod=new JButton("수정");
-		Jdel=new JButton("삭제");
-		
-		panel1.add(Jlogin);
-		panel1.add(Jjoin);
-		
-		jp1.add(Jadd);
-		jp1.add(Jmod);
-		jp1.add(Jdel);
-		 
-	
-		list=new JList();
-		info=new JTextArea();
-		
-		
-		
-		jp3.add(list);
 		
 		int v=ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED;
 		int h=ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED;
 		JScrollPane jsp = new JScrollPane(info,v,h);
 		//jp4.add(icon,BorderLayout.CENTER);
-		jp4.add(jsp);
+		pdown2right2down.add(jsp);
 		
+		
+		/*
 		//panel3.add(jp2);//,BorderLayout.CENTER);
 		panel3.add(jp3);
 		panel2.add(jp1);
+		panel2.add(jp2);
 		panel2.add(panel3);
 		panel4.add(panel2);
 		panel4.add(jp4);
-		
+		*/
 		
 		//------------------------------------------------------------------------------
 		//	Frame 속성
@@ -163,8 +238,13 @@ class TestLibraryDemo extends JFrame implements ActionListener, ListSelectionLis
 		
 		Container c = getContentPane();
 		c.setLayout(new BorderLayout());		
-		c.add(panel1,BorderLayout.NORTH);
-		c.add(panel4,BorderLayout.CENTER);
+		//c.add(jmb);
+		//c.add(menu);
+		//c.add(panel1,BorderLayout.NORTH);
+		c.add(pup, BorderLayout.NORTH);
+		c.add(pdown, BorderLayout.CENTER);
+		//c.add(panel4,BorderLayout.CENTER);
+		
 		
 		Jlogin.addActionListener(this);
 		Jjoin.addActionListener(this);
@@ -178,7 +258,7 @@ class TestLibraryDemo extends JFrame implements ActionListener, ListSelectionLis
 		
 		
 		setTitle("Test Library");
-		setSize(1000, 800);
+		setSize(750, 550); 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);	
 	
@@ -220,11 +300,11 @@ class TestLibraryDemo extends JFrame implements ActionListener, ListSelectionLis
 			
 	else if(event.getSource()==Jmod)
 	{
-		jp3.setBorder(new TitledBorder("도서 목록 뿌잉"));
+		pdown2right2.setBorder(new TitledBorder("도서 목록 뿌잉"));
 		//Jmod.hide();
 		Library newLibrary2=library.getLibraryAt(list.getSelectedIndex());
 		if(newLibrary2!=null)
-			jp3.setBorder(new TitledBorder("음슴"));
+			pdown2right2.setBorder(new TitledBorder("음슴"));
 		newLibrary2.setTitle(title.getText());
 		newLibrary2.setPublisher(publisher.getText());
 		newLibrary2.setAuthors(authors.getText());
@@ -359,7 +439,8 @@ public class TestLibrary //extends Frame
 		//new TestLibrary();
 		new TestLibraryDemo();
 	}
-}/**
+}
+/*
 public TestLibrary(){
 	super("제목");
 	this.init();
@@ -375,6 +456,7 @@ public void start(){
 	System.out.println("조주");
 }
 }
-}**/
+}
+*/
 
 
